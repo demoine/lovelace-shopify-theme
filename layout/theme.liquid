@@ -30,13 +30,12 @@
   {%- comment -%} Font preloading {%- endcomment -%}
   <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
 
-  {{ settings.font_heading | font_face: font_display: 'swap' }}
-  {%- unless settings.font_body.family == settings.font_heading.family and settings.font_body.style == settings.font_heading.style and settings.font_body.weight == settings.font_heading.weight -%}
-    {{ settings.font_body | font_face: font_display: 'swap' }}
-  {%- endunless -%}
+  {% style %}
+    {{ settings.font_heading | font_face: font_display: 'swap' }}
+    {%- unless settings.font_body.family == settings.font_heading.family and settings.font_body.style == settings.font_heading.style and settings.font_body.weight == settings.font_heading.weight -%}
+      {{ settings.font_body | font_face: font_display: 'swap' }}
+    {%- endunless -%}
 
-  {% comment %} Liquid-powered CSS custom properties — overrides hardcoded defaults in base.css {% endcomment %}
-  <style>
     :root {
       --color-primary: {{ settings.color_primary }};
       --color-accent: {{ settings.color_accent }};
@@ -54,7 +53,7 @@
       --font-body-style: {{ settings.font_body.style }};
       --font-body-size: {{ settings.font_body_size }}px;
     }
-  </style>
+  {% endstyle %}
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
 
