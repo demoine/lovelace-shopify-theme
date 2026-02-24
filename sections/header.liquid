@@ -5,10 +5,7 @@
     {%- comment -%} Logo — Left {%- endcomment -%}
     <div class="site-header__logo">
       <a href="{{ routes.root_url }}">
-        {% render 'lovelace-logo', width: 36, height: 36 %}
-        {%- if section.settings.show_logo_text -%}
-          <span class="site-header__logo-text">{{ settings.brand_name }}</span>
-        {%- endif -%}
+        {% render 'lovelace-logo', width: 140, class: 'site-header__logo-img' %}
       </a>
     </div>
 
@@ -91,12 +88,6 @@
   "name": "Header",
   "class": "site-header-section",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_logo_text",
-      "label": "Show brand name next to logo",
-      "default": true
-    },
     {
       "type": "checkbox",
       "id": "show_account",

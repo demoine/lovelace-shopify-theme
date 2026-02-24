@@ -1,32 +1,21 @@
 {%- comment -%}
-  LOVELACE heart-L logo mark.
-  Usage: {% render 'lovelace-logo', width: 40, height: 40, class: '' %}
+  LOVELACE logo.
+  Displays the uploaded logo image, or falls back to the brand name as text.
+  Usage: {% render 'lovelace-logo', width: 120, class: '' %}
 {%- endcomment -%}
 
-{%- assign logo_width = width | default: 40 -%}
-{%- assign logo_height = height | default: 40 -%}
+{%- assign logo_width = width | default: 120 -%}
 {%- assign logo_class = class | default: '' -%}
 
-<svg
-  class="lovelace-logo {{ logo_class }}"
-  width="{{ logo_width }}"
-  height="{{ logo_height }}"
-  viewBox="0 0 100 100"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  aria-label="{{ settings.brand_name }} logo"
-  role="img"
->
-  <path
-    d="M50 90 L15 50 C5 35 15 15 35 15 C45 15 50 25 50 25 C50 25 55 15 65 15 C85 15 95 35 85 50 Z"
-    fill="currentColor"
-  />
-  <path
-    d="M38 35 L38 70 L60 70"
-    stroke="var(--color-background, #FFFFFF)"
-    stroke-width="6"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    fill="none"
-  />
-</svg>
+{%- if settings.logo != blank -%}
+  <img
+    src="{{ settings.logo | image_url: width: logo_width }}"
+    alt="{{ settings.brand_name }}"
+    width="{{ logo_width }}"
+    height="{{ logo_width | divided_by: settings.logo.aspect_ratio | round }}"
+    class="lovelace-logo {{ logo_class }}"
+    loading="eager"
+  >
+{%- else -%}
+  <span class="lovelace-logo-text {{ logo_class }}">{{ settings.brand_name }}</span>
+{%- endif -%}

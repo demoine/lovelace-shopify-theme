@@ -1,23 +1,28 @@
 .site-footer {
   background-color: var(--color-primary);
   color: var(--color-text-light);
-  padding: var(--spacing-lg) 0 var(--spacing-md);
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
 }
 
 .site-footer__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: 1.5rem;
 }
 
 .site-footer__logo {
   color: var(--color-text-light);
 }
 
+.site-footer__logo-img {
+  height: 36px;
+  width: auto;
+}
+
 .site-footer__social {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: 0.75rem;
   align-items: center;
 }
 
@@ -27,10 +32,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   color: var(--color-text-light);
-  transition: border-color var(--transition), background-color var(--transition);
+  transition: all var(--transition);
 }
 
 .site-footer__social-link:hover {
@@ -42,9 +46,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem 1.5rem;
-  font-size: 0.75rem;
-  opacity: 0.7;
+  gap: 0.5rem 2rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.5;
 }
 
 .site-footer__policy-link {
@@ -58,9 +64,10 @@
 }
 
 .site-footer__copyright {
-  font-size: 0.75rem;
-  opacity: 0.5;
+  font-size: 0.6875rem;
+  opacity: 0.35;
   margin: 0;
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 749px) {

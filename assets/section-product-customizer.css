@@ -4,8 +4,8 @@
 
 .product-customizer__heading {
   text-align: center;
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(1.6rem, 4vw, 2.75rem);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: var(--spacing-lg);
 }

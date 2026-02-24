@@ -12,7 +12,6 @@
     "header": {
       "type": "header",
       "settings": {
-        "show_logo_text": true,
         "show_account": true
       },
       "blocks": {

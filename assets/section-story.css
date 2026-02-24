@@ -1,29 +1,40 @@
 .story {
   padding: var(--spacing-section) 0;
+  background-color: var(--color-background);
 }
 
 .story__content {
-  max-width: 700px;
+  max-width: 640px;
   margin: 0 auto;
   text-align: center;
 }
 
 .story__heading {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(1.6rem, 4vw, 2.75rem);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1rem;
+}
+
+.story__heading::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: 1rem auto 0;
 }
 
 .story__body {
-  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
-  line-height: 2;
+  font-size: clamp(0.9375rem, 1.8vw, 1rem);
+  line-height: 1.85;
   color: var(--color-text);
-  opacity: 0.85;
+  opacity: 0.75;
+  margin-top: var(--spacing-md);
 }
 
 .story__body p {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.25em;
 }
 
 .story__body p:last-child {

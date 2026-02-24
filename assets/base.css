@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LOVELACE Theme — Base Styles
+   LOVELACE Theme — Base Styles  |  Modern · Bold · Minimal
    ========================================================================== */
 
 /* ---------- CSS Custom Properties ---------- */
@@ -12,6 +12,9 @@
   --color-text-light: {{ settings.color_text_light }};
   --color-border: {{ settings.color_border }};
 
+  --color-surface: #F6F4F2;
+  --color-surface-dark: #1A1A1A;
+
   --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
   --font-heading-weight: {{ settings.font_heading.weight }};
   --font-heading-style: {{ settings.font_heading.style }};
@@ -21,18 +24,18 @@
   --font-body-size: {{ settings.font_body_size }}px;
 
   --page-width: 1200px;
-  --page-width-narrow: 800px;
+  --page-width-narrow: 720px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 6rem;
-  --spacing-section: 5rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+  --spacing-section: 4rem;
 
-  --header-height: 70px;
-  --announcement-height: 40px;
-  --border-radius: 4px;
-  --transition: 0.3s ease;
+  --header-height: 64px;
+  --announcement-height: 36px;
+  --border-radius: 0;
+  --transition: 0.25s ease;
 }
 
 /* ---------- Reset ---------- */
@@ -56,7 +59,7 @@ body {
   font-style: var(--font-body-style);
   color: var(--color-text);
   background-color: var(--color-background);
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -97,19 +100,20 @@ ol {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
+  font-weight: 700;
   font-style: var(--font-heading-style);
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 }
 
 /* ---------- Typography ---------- */
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.75rem); }
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 h4 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
 
 p {
-  margin-bottom: 1em;
+  margin-bottom: 0.875em;
 }
 
 p:last-child {
@@ -145,18 +149,19 @@ p:last-child {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 2rem;
+  padding: 1rem 2.5rem;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   border-radius: var(--border-radius);
-  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  transition: all var(--transition);
   cursor: pointer;
   border: 2px solid transparent;
   text-decoration: none;
   line-height: 1;
+  position: relative;
 }
 
 .btn--primary {
@@ -203,11 +208,16 @@ p:last-child {
   color: var(--color-accent-secondary);
 }
 
+.btn--large {
+  padding: 1.125rem 3rem;
+  font-size: 0.875rem;
+}
+
 /* ---------- Form Elements ---------- */
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--color-border);
   border-radius: var(--border-radius);
   background-color: var(--color-background);
   transition: border-color var(--transition);
@@ -221,8 +231,28 @@ p:last-child {
 .form-label {
   display: block;
   margin-bottom: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Logo text fallback ---------- */
+.lovelace-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: currentColor;
+}
+
+/* ---------- Divider ---------- */
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: 0 auto var(--spacing-md);
 }
 
 /* ---------- Visually Hidden ---------- */
@@ -265,8 +295,8 @@ p:last-child {
 /* ---------- Responsive Helpers ---------- */
 @media (max-width: 749px) {
   :root {
-    --spacing-section: 3rem;
-    --header-height: 60px;
+    --spacing-section: 2.5rem;
+    --header-height: 56px;
   }
 
   .page-width {
