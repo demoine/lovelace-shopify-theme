@@ -1,0 +1,93 @@
+{{ 'section-inspiration-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="inspiration-grid" id="inspiration-{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="inspiration-grid__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <p class="inspiration-grid__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="inspiration-grid__grid">
+        {%- for block in section.blocks -%}
+          <div class="inspiration-grid__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.caption | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+                class="inspiration-grid__image"
+              >
+            {%- else -%}
+              <div class="inspiration-grid__placeholder">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.caption != blank -%}
+              <p class="inspiration-grid__caption">{{ block.settings.caption }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Inspiration Grid",
+  "class": "inspiration-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Inspiration Gallery"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "See what's possible. Browse example designs across all our preset styles to spark ideas for your own custom tag."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Design example"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inspiration Grid",
+      "blocks": [
+        { "type": "image", "settings": { "caption": "Bright & Playful" } },
+        { "type": "image", "settings": { "caption": "Soft Pastels" } },
+        { "type": "image", "settings": { "caption": "Adventure" } },
+        { "type": "image", "settings": { "caption": "Tropical" } },
+        { "type": "image", "settings": { "caption": "Corporate" } },
+        { "type": "image", "settings": { "caption": "Modern Minimal" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

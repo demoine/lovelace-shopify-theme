@@ -1,0 +1,200 @@
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .main-product {
+    padding: var(--spacing-section) 0;
+  }
+
+  .main-product__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  @media (min-width: 750px) {
+    .main-product__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .main-product__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background-color: #f5f5f5;
+  }
+
+  .main-product__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .main-product__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .main-product__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .main-product__price {
+    font-size: 1.25rem;
+  }
+
+  .main-product__price--sale {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .main-product__price--compare {
+    text-decoration: line-through;
+    opacity: 0.5;
+    margin-left: 0.5rem;
+  }
+
+  .main-product__variants {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .main-product__variant-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .main-product__variant-select {
+    max-width: 300px;
+  }
+
+  .main-product__quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .main-product__quantity-input {
+    width: 70px;
+    text-align: center;
+    padding: 0.625rem;
+  }
+
+  .main-product__description {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    opacity: 0.85;
+  }
+
+  .main-product__description h1,
+  .main-product__description h2,
+  .main-product__description h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+</style>
+
+<section class="main-product">
+  <div class="page-width">
+    <div class="main-product__grid">
+      {%- comment -%} Product Media {%- endcomment -%}
+      <div class="main-product__media">
+        {%- if product.featured_image -%}
+          <img
+            src="{{ product.featured_image | image_url: width: 900 }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            width="900"
+            height="{{ 900 | divided_by: product.featured_image.aspect_ratio | round }}"
+            fetchpriority="high"
+            class="main-product__image"
+          >
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'main-product__image' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Product Info {%- endcomment -%}
+      <div class="main-product__info">
+        <h1 class="main-product__title">{{ product.title }}</h1>
+
+        <div class="main-product__price">
+          {%- if product.compare_at_price > product.price -%}
+            <span class="main-product__price--sale">{{ product.price | money }}</span>
+            <span class="main-product__price--compare">{{ product.compare_at_price | money }}</span>
+          {%- else -%}
+            {{ product.price | money }}
+          {%- endif -%}
+        </div>
+
+        {%- form 'product', product -%}
+          {%- if product.has_only_default_variant == false -%}
+            <div class="main-product__variants">
+              <label for="variant-select" class="main-product__variant-label">
+                {{ product.options.first }}
+              </label>
+              <select
+                name="id"
+                id="variant-select"
+                class="form-input main-product__variant-select"
+              >
+                {%- for variant in product.variants -%}
+                  <option
+                    value="{{ variant.id }}"
+                    {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+                    {{ variant.title }} — {{ variant.price | money }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- else -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {%- endif -%}
+
+          <div class="main-product__quantity">
+            <label for="quantity" class="main-product__variant-label">{{ 'product.quantity' | t }}</label>
+            <input
+              type="number"
+              name="quantity"
+              id="quantity"
+              value="1"
+              min="1"
+              class="form-input main-product__quantity-input"
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn--primary"
+            {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+          >
+            {%- if product.selected_or_first_available_variant.available -%}
+              {{ 'product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+
+        {%- if product.description != blank -%}
+          <div class="main-product__description">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "class": "main-product-section",
+  "settings": []
+}
+{% endschema %}

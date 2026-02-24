@@ -1,0 +1,41 @@
+{{ 'section-story.css' | asset_url | stylesheet_tag }}
+
+<section class="story" id="story-{{ section.id }}">
+  <div class="page-width">
+    <div class="story__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="story__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="story__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story",
+  "class": "story-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Story"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>LOVELACE started with a name. My name. After years of building a brand around initials that never quite fit, I realized the answer was always there. LOVELACE. Easy to say. Easy to remember. And right in the middle of it, the word that matters most. Love.</p><p>This brand is built on one idea. You have to love yourself first. Not someday. Now. Like the oxygen mask on a plane, you secure yours before you help anyone else. That's not selfish. That's necessary.</p><p>Everything here is a reminder of that. The clothes you wear. The tags you carry. The way you move through the world. This is your reminder to love what's already within you.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story"
+    }
+  ]
+}
+{% endschema %}

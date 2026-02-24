@@ -1,0 +1,77 @@
+<style>
+  .main-order { padding: var(--spacing-section) 0; }
+  .main-order__title { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg); }
+  .main-order__back { text-align: center; margin-bottom: var(--spacing-md); }
+  .main-order__back a { font-size: 0.875rem; color: var(--color-accent); text-decoration: underline; }
+  .order-details { max-width: 700px; margin: 0 auto; }
+  .order-details__section { margin-bottom: var(--spacing-lg); }
+  .order-details__section-title { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--spacing-sm); border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+  .order-line-item { display: flex; gap: var(--spacing-sm); padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; }
+  .order-line-item__info { flex: 1; }
+  .order-line-item__title { font-weight: 600; }
+  .order-line-item__props { font-size: 0.8125rem; opacity: 0.7; margin-top: 0.25rem; }
+  .order-line-item__price { font-weight: 600; white-space: nowrap; }
+  .order-summary { font-size: 0.9375rem; line-height: 2; }
+  .order-summary dt { display: inline; font-weight: 600; }
+  .order-summary dd { display: inline; margin-left: 0.5rem; }
+</style>
+
+<section class="main-order">
+  <div class="page-width">
+    <div class="main-order__back">
+      <a href="{{ routes.account_url }}">&larr; {{ 'customer.account.title' | t }}</a>
+    </div>
+    <h1 class="main-order__title">{{ 'customer.order.title' | t: name: order.name }}</h1>
+
+    <div class="order-details">
+      <div class="order-details__section">
+        <h2 class="order-details__section-title">Items</h2>
+        {%- for line_item in order.line_items -%}
+          <div class="order-line-item">
+            <div class="order-line-item__info">
+              <p class="order-line-item__title">{{ line_item.title }}</p>
+              <p>Qty: {{ line_item.quantity }}</p>
+              {%- if line_item.properties.size > 0 -%}
+                <div class="order-line-item__props">
+                  {%- for property in line_item.properties -%}
+                    {%- unless property.last == blank or property.first contains '_' -%}
+                      <p>{{ property.first }}: {{ property.last }}</p>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="order-line-item__price">{{ line_item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="order-details__section">
+        <h2 class="order-details__section-title">Summary</h2>
+        <dl class="order-summary">
+          <dt>Subtotal:</dt><dd>{{ order.subtotal_price | money }}</dd><br>
+          {%- for shipping_method in order.shipping_methods -%}
+            <dt>Shipping ({{ shipping_method.title }}):</dt><dd>{{ shipping_method.price | money }}</dd><br>
+          {%- endfor -%}
+          <dt>Tax:</dt><dd>{{ order.tax_price | money }}</dd><br>
+          <dt>Total:</dt><dd><strong>{{ order.total_price | money }}</strong></dd>
+        </dl>
+      </div>
+
+      <div class="order-details__section">
+        <h2 class="order-details__section-title">Shipping Address</h2>
+        <div style="font-size: 0.875rem; line-height: 1.6;">
+          {{ order.shipping_address | format_address }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Order",
+  "class": "main-order-section",
+  "settings": []
+}
+{% endschema %}

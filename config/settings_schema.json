@@ -1,0 +1,156 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "LOVELACE",
+    "theme_version": "1.0.0",
+    "theme_author": "DeMoine Lovelace",
+    "theme_documentation_url": "https://shop.lovelace.work",
+    "theme_support_url": "https://shop.lovelace.work"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#2C2C2C"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent color (LOVELACE coral)",
+        "default": "#C9584C"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_secondary",
+        "label": "Secondary accent (LOVELACE'D)",
+        "default": "#E8836B"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "#2C2C2C"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Light text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border color",
+        "default": "#E5E5E5"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "label": "Base font size (px)",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social media links"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand assets"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image (fallback if SVG not used)"
+      },
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Brand name",
+        "default": "LOVELACE"
+      },
+      {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Copyright text",
+        "default": "© 2026 DeMoine Lovelace"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart settings"
+      },
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "page", "label": "Cart page" },
+          { "value": "drawer", "label": "Cart drawer" }
+        ],
+        "default": "page"
+      }
+    ]
+  }
+]

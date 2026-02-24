@@ -1,0 +1,55 @@
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="main-search section-padding">
+  <div class="page-width">
+    <h1 style="text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-md);">
+      {{ 'search.title' | t }}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" style="max-width: 500px; margin: 0 auto var(--spacing-lg);">
+      <div style="display: flex; gap: 0.5rem;">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'search.placeholder' | t }}"
+          class="form-input"
+          aria-label="{{ 'search.title' | t }}"
+        >
+        <button type="submit" class="btn btn--primary">{{ 'search.submit' | t }}</button>
+      </div>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <div class="collection-grid__grid">
+          {%- for result in search.results -%}
+            {%- if result.object_type == 'product' -%}
+              {% render 'product-card', product: result, lazy: true %}
+            {%- else -%}
+              <div class="product-card">
+                <a href="{{ result.url }}" class="product-card__link">
+                  <div class="product-card__info">
+                    <h3 class="product-card__title">{{ result.title }}</h3>
+                    <p class="product-card__price" style="opacity: 0.6;">{{ result.content | strip_html | truncatewords: 20 }}</p>
+                  </div>
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="text-center" style="opacity: 0.6;">{{ 'search.no_results' | t: terms: search.terms }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Results",
+  "class": "main-search-section",
+  "settings": []
+}
+{% endschema %}

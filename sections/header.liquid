@@ -1,0 +1,155 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+
+<header class="site-header" data-header>
+  <div class="page-width site-header__inner">
+    {%- comment -%} Logo — Left {%- endcomment -%}
+    <div class="site-header__logo">
+      <a href="{{ routes.root_url }}">
+        {% render 'lovelace-logo', width: 36, height: 36 %}
+        {%- if section.settings.show_logo_text -%}
+          <span class="site-header__logo-text">{{ settings.brand_name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- comment -%} Navigation — Center {%- endcomment -%}
+    <nav class="site-header__nav" aria-label="Main navigation">
+      <ul class="site-header__nav-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' -%}
+            <li>
+              <a
+                href="{{ block.settings.link }}"
+                class="site-header__nav-link{% if block.settings.link == request.path %} is-active{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label }}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Actions — Right {%- endcomment -%}
+    <div class="site-header__actions">
+      {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="site-header__action" aria-label="{{ 'general.account' | t }}">
+          {% render 'icon-account', width: 22, height: 22 %}
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="site-header__action" aria-label="{{ 'general.cart' | t }}">
+        {% render 'icon-cart', width: 22, height: 22 %}
+        {%- if cart.item_count > 0 -%}
+          <span class="site-header__cart-count" data-cart-count>{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+
+      <button
+        class="site-header__menu-toggle hide-desktop"
+        aria-label="{{ 'accessibility.open_menu' | t }}"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        {% render 'icon-menu', width: 24, height: 24 %}
+      </button>
+    </div>
+  </div>
+</header>
+
+{%- comment -%} Mobile Navigation Drawer {%- endcomment -%}
+<div class="mobile-nav" data-mobile-nav aria-hidden="true">
+  <div class="mobile-nav__overlay" data-mobile-nav-overlay></div>
+  <div class="mobile-nav__drawer" role="dialog" aria-label="{{ 'accessibility.open_menu' | t }}">
+    <div class="mobile-nav__header">
+      <button class="mobile-nav__close" aria-label="{{ 'accessibility.close_menu' | t }}" data-mobile-nav-close>
+        {% render 'icon-close', width: 24, height: 24 %}
+      </button>
+    </div>
+    <ul class="mobile-nav__list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nav_link' -%}
+          <li>
+            <a href="{{ block.settings.link }}" class="mobile-nav__link">
+              {{ block.settings.label }}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if shop.customer_accounts_enabled -%}
+        <li>
+          <a href="{{ routes.account_url }}" class="mobile-nav__link">{{ 'general.account' | t }}</a>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "site-header-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_logo_text",
+      "label": "Show brand name next to logo",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account icon",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Shop"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop",
+            "link": "/collections/all"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "LOVELACE'D",
+            "link": "/pages/lovelaced"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "About",
+            "link": "/pages/about"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

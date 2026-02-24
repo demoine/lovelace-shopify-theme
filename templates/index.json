@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "LOVE YOU FIRST",
+        "body": "<p>You are seen. You are valued. You are enough. Exactly as you are. Your journey is yours. Don\u2019t compare it. Honor it. This is your reminder to love what\u2019s already within you. Wear it close.<\/p>",
+        "cta_text": "Shop the Collection",
+        "cta_link": "#collection-grid"
+      }
+    },
+    "collection-grid": {
+      "type": "collection-grid",
+      "settings": {
+        "heading": "The Collection",
+        "collection": "",
+        "product_limit": 8,
+        "show_view_all": true,
+        "view_all_text": "View All"
+      }
+    },
+    "lovelaced-intro": {
+      "type": "lovelaced-intro",
+      "settings": {
+        "heading": "Introducing LOVELACE\u2019D",
+        "body": "<p>Custom photo bag tags, designed by you, printed by us. Upload your photo, pick your style, and we handle the rest. Every order is personally reviewed before it\u2019s printed.<\/p>",
+        "cta_text": "Make It Yours",
+        "cta_link": "/pages/lovelaced"
+      }
+    },
+    "story": {
+      "type": "story",
+      "settings": {
+        "heading": "The Story",
+        "body": "<p>LOVELACE started with a name. My name. After years of building a brand around initials that never quite fit, I realized the answer was always there. LOVELACE. Easy to say. Easy to remember. And right in the middle of it, the word that matters most. Love.<\/p><p>This brand is built on one idea. You have to love yourself first. Not someday. Now. Like the oxygen mask on a plane, you secure yours before you help anyone else. That\u2019s not selfish. That\u2019s necessary.<\/p><p>Everything here is a reminder of that. The clothes you wear. The tags you carry. The way you move through the world. This is your reminder to love what\u2019s already within you.<\/p>"
+      }
+    },
+    "email-signup": {
+      "type": "email-signup",
+      "settings": {
+        "show_logo": true,
+        "heading": "Get on the list",
+        "subline": "New drops. Early access. No noise."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "collection-grid",
+    "lovelaced-intro",
+    "story",
+    "email-signup"
+  ]
+}

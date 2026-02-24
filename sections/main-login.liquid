@@ -1,0 +1,48 @@
+<style>
+  .main-login { padding: var(--spacing-section) 0; }
+  .main-login__form { max-width: 400px; margin: 0 auto; }
+  .main-login__title { text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg); }
+  .main-login__field { margin-bottom: var(--spacing-sm); }
+  .main-login__actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-top: var(--spacing-md); }
+  .main-login__link { font-size: 0.875rem; color: var(--color-accent); text-decoration: underline; }
+</style>
+
+<section class="main-login">
+  <div class="page-width">
+    <div class="main-login__form">
+      <h1 class="main-login__title">{{ 'customer.login.title' | t }}</h1>
+
+      {%- form 'customer_login' -%}
+        {%- if form.errors -%}
+          <div style="color: var(--color-accent); margin-bottom: var(--spacing-sm); text-align: center;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="main-login__field">
+          <label for="login-email" class="form-label">{{ 'customer.login.email' | t }}</label>
+          <input type="email" name="customer[email]" id="login-email" class="form-input" autocomplete="email" required>
+        </div>
+
+        <div class="main-login__field">
+          <label for="login-password" class="form-label">{{ 'customer.login.password' | t }}</label>
+          <input type="password" name="customer[password]" id="login-password" class="form-input" autocomplete="current-password" required>
+        </div>
+
+        <div class="main-login__actions">
+          <button type="submit" class="btn btn--primary" style="width: 100%;">{{ 'customer.login.submit' | t }}</button>
+          <a href="{{ routes.account_recover_url }}" class="main-login__link">{{ 'customer.login.forgot_password' | t }}</a>
+          <a href="{{ routes.account_register_url }}" class="main-login__link">{{ 'customer.login.create_account' | t }}</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Login",
+  "class": "main-login-section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+{%- comment -%}
+  Product card snippet.
+  Usage: {% render 'product-card', product: product, lazy: true %}
+{%- endcomment -%}
+
+{%- assign lazy_load = lazy | default: true -%}
+
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title }}">
+    <div class="product-card__image-wrapper">
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ product.featured_image.alt | escape }}"
+          width="600"
+          height="{{ 600 | divided_by: product.featured_image.aspect_ratio | round }}"
+          {% if lazy_load %}loading="lazy"{% else %}fetchpriority="high"{% endif %}
+          class="product-card__image"
+        >
+      {%- else -%}
+        <div class="product-card__placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-card__info">
+      <h3 class="product-card__title">{{ product.title }}</h3>
+      <p class="product-card__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="product-card__price--sale">{{ product.price | money }}</span>
+          <span class="product-card__price--compare">{{ product.compare_at_price | money }}</span>
+        {%- else -%}
+          {{ product.price | money }}
+        {%- endif -%}
+      </p>
+    </div>
+  </a>
+</div>

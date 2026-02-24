@@ -1,0 +1,46 @@
+{{ 'section-collection-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="main-list-collections section-padding">
+  <div class="page-width">
+    <h1 style="text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg);">
+      {{ 'collection.title' | t }}
+    </h1>
+
+    <div class="collection-grid__grid">
+      {%- for collection in collections -%}
+        <div class="product-card">
+          <a href="{{ collection.url }}" class="product-card__link">
+            <div class="product-card__image-wrapper">
+              {%- if collection.image -%}
+                <img
+                  src="{{ collection.image | image_url: width: 600 }}"
+                  alt="{{ collection.title | escape }}"
+                  width="600"
+                  height="{{ 600 | divided_by: collection.image.aspect_ratio | round }}"
+                  loading="lazy"
+                  class="product-card__image"
+                >
+              {%- else -%}
+                <div class="product-card__placeholder">
+                  {{ 'collection-1' | placeholder_svg_tag: 'product-card__placeholder-svg' }}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="product-card__info">
+              <h2 class="product-card__title">{{ collection.title }}</h2>
+              <p class="product-card__price">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "class": "main-list-collections-section",
+  "settings": []
+}
+{% endschema %}

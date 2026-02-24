@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "lovelaced-hero": {
+      "type": "lovelaced-hero",
+      "settings": {
+        "heading": "Make it yours.",
+        "subheadline": "<p>Custom photo bag tags, designed by you, printed by us. Double-sided. Durable. Personal.<\/p>",
+        "cta_text": "Start Designing",
+        "cta_link": "#product-customizer"
+      }
+    },
+    "lovelaced-story": {
+      "type": "lovelaced-story",
+      "settings": {
+        "heading": "The Story",
+        "body": "<p>LOVELACE\u2019D started with a school project and a Disney vacation. What began as a simple idea between a father and daughter became something bigger. A way to turn everyday items into something personal, something protected, something that\u2019s unmistakably yours.<\/p><p>Every tag is custom designed with your photo on the front and your details on the back. No templates. No mass production. Each one is reviewed and printed by hand.<\/p>"
+      }
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "How It Works"
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "icon": "camera",
+            "title": "Upload Your Photo",
+            "body": "One photo. That\u2019s all you need. A family shot, your pet, your kid\u2019s favorite moment. We fit it to your tag."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "icon": "palette",
+            "title": "Pick Your Style",
+            "body": "Choose a design preset for the back of your tag. Bright, minimal, professional \u2014 whatever fits."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Add Your Details",
+            "body": "Name, phone, email, address. You choose what goes on the back. Only what you want, nothing you don\u2019t."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "icon": "printer",
+            "title": "We Review & Print",
+            "body": "Every order is personally reviewed for quality before we print. Double-sided on durable PVC. Then shipped to your door."
+          }
+        }
+      },
+      "block_order": ["step-1", "step-2", "step-3", "step-4"]
+    },
+    "why-lovelaced": {
+      "type": "why-lovelaced",
+      "settings": {
+        "heading": "Why LOVELACE\u2019D?"
+      },
+      "blocks": {
+        "personal": {
+          "type": "value_block",
+          "settings": {
+            "title": "It\u2019s Personal",
+            "body": "Your photo. Your info. Your tag. This isn\u2019t a generic label. It\u2019s something that\u2019s unmistakably yours."
+          }
+        },
+        "protected": {
+          "type": "value_block",
+          "settings": {
+            "title": "It\u2019s Protected",
+            "body": "Your details are stored securely as part of your order and used only for printing. We never share your data."
+          }
+        },
+        "reviewed": {
+          "type": "value_block",
+          "settings": {
+            "title": "It\u2019s Reviewed",
+            "body": "No auto-production. Every design is personally checked before it\u2019s printed. Quality is not optional."
+          }
+        }
+      },
+      "block_order": ["personal", "protected", "reviewed"]
+    },
+    "product-customizer": {
+      "type": "product-customizer",
+      "settings": {
+        "heading": "Design Your Tag",
+        "product": ""
+      },
+      "blocks": {
+        "bright": {
+          "type": "design_preset",
+          "settings": { "name": "Bright & Playful", "swatch": "bright" }
+        },
+        "pastels": {
+          "type": "design_preset",
+          "settings": { "name": "Soft Pastels", "swatch": "pastels" }
+        },
+        "adventure": {
+          "type": "design_preset",
+          "settings": { "name": "Adventure", "swatch": "adventure" }
+        },
+        "tropical": {
+          "type": "design_preset",
+          "settings": { "name": "Tropical", "swatch": "tropical" }
+        },
+        "corporate": {
+          "type": "design_preset",
+          "settings": { "name": "Corporate", "swatch": "corporate" }
+        },
+        "minimal": {
+          "type": "design_preset",
+          "settings": { "name": "Modern Minimal", "swatch": "minimal" }
+        }
+      },
+      "block_order": ["bright", "pastels", "adventure", "tropical", "corporate", "minimal"]
+    },
+    "social-follow": {
+      "type": "social-follow",
+      "settings": {
+        "heading": "Follow LOVELACE\u2019D",
+        "subheading": "See the latest designs and customer creations."
+      }
+    }
+  },
+  "order": [
+    "lovelaced-hero",
+    "lovelaced-story",
+    "how-it-works",
+    "why-lovelaced",
+    "product-customizer",
+    "social-follow"
+  ]
+}

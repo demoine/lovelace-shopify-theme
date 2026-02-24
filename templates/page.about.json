@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "the-brand": {
+      "type": "about-block",
+      "settings": {
+        "heading": "The Brand",
+        "body": "<p>LOVELACE started with a name. My name. After years of building a brand around initials that never quite fit, I realized the answer was always there. LOVELACE. Easy to say. Easy to remember. And right in the middle of it, the word that matters most. Love.<\/p><p>This brand is built on one idea. You have to love yourself first. Not someday. Now. Like the oxygen mask on a plane, you secure yours before you help anyone else. That\u2019s not selfish. That\u2019s necessary.<\/p><p>Everything here is a reminder of that. The clothes you wear. The tags you carry. The way you move through the world. This is your reminder to love what\u2019s already within you.<\/p>",
+        "alternate_background": false
+      }
+    },
+    "lovelaced-origin": {
+      "type": "about-block",
+      "settings": {
+        "heading": "LOVELACE\u2019D",
+        "body": "<p>LOVELACE\u2019D started with a school project and a Disney vacation. What began as a simple idea between a father and daughter became something bigger. A way to turn everyday items into something personal, something protected, something that\u2019s unmistakably yours.<\/p>",
+        "alternate_background": true
+      }
+    },
+    "the-connection": {
+      "type": "about-block",
+      "settings": {
+        "heading": "The Connection",
+        "body": "<p>LOVELACE is who we are. LOVELACE\u2019D is what we do. Both are built on the same thing. Making sure the things closest to you reflect who you are.<\/p>",
+        "alternate_background": false
+      }
+    }
+  },
+  "order": [
+    "the-brand",
+    "lovelaced-origin",
+    "the-connection"
+  ]
+}

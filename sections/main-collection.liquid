@@ -1,0 +1,89 @@
+{{ 'section-collection-grid.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+<section class="main-collection section-padding">
+  <div class="page-width">
+    <header class="main-collection__header">
+      <h1 class="collection-grid__heading">{{ collection.title }}</h1>
+      {%- if collection.description != blank and section.settings.show_description -%}
+        <div class="main-collection__description">{{ collection.description }}</div>
+      {%- endif -%}
+    </header>
+
+    {%- if section.settings.enable_sorting -%}
+      <div class="main-collection__sort">
+        <label for="sort-by" class="visually-hidden">{{ 'collection.sort_by' | t }}</label>
+        <select id="sort-by" class="form-input" data-sort-select style="max-width: 250px; margin-left: auto; display: block; margin-bottom: var(--spacing-md);">
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}"{% if collection.sort_by == option.value %} selected{% endif %}>
+              {{ option.name }}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- endif -%}
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="collection-grid__grid">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product, lazy: true %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="main-collection__pagination text-center" style="margin-top: var(--spacing-lg);" aria-label="Pagination">
+            {{ paginate | default_pagination }}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <p class="text-center" style="padding: var(--spacing-lg) 0; opacity: 0.6;">
+          {{ 'collection.no_products' | t }}
+        </p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+<script>
+  (function() {
+    var sortSelect = document.querySelector('[data-sort-select]');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function() {
+        var url = new URL(window.location.href);
+        url.searchParams.set('sort_by', this.value);
+        window.location.href = url.toString();
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection Page",
+  "class": "main-collection-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show collection description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    }
+  ]
+}
+{% endschema %}

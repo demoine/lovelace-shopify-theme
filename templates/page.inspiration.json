@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "inspiration": {
+      "type": "inspiration-grid",
+      "settings": {
+        "heading": "Inspiration Gallery",
+        "description": "See what's possible. Browse example designs across all our preset styles to spark ideas for your own custom tag."
+      },
+      "blocks": {
+        "img-1": {
+          "type": "image",
+          "settings": { "caption": "Bright & Playful" }
+        },
+        "img-2": {
+          "type": "image",
+          "settings": { "caption": "Soft Pastels" }
+        },
+        "img-3": {
+          "type": "image",
+          "settings": { "caption": "Adventure" }
+        },
+        "img-4": {
+          "type": "image",
+          "settings": { "caption": "Tropical" }
+        },
+        "img-5": {
+          "type": "image",
+          "settings": { "caption": "Corporate" }
+        },
+        "img-6": {
+          "type": "image",
+          "settings": { "caption": "Modern Minimal" }
+        }
+      },
+      "block_order": ["img-1", "img-2", "img-3", "img-4", "img-5", "img-6"]
+    }
+  },
+  "order": ["inspiration"]
+}

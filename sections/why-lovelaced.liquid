@@ -1,0 +1,85 @@
+{{ 'section-why-lovelaced.css' | asset_url | stylesheet_tag }}
+
+<section class="why-lovelaced" id="why-lovelaced-{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="why-lovelaced__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="why-lovelaced__grid">
+      {%- for block in section.blocks -%}
+        <div class="why-lovelaced__block" {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <h3 class="why-lovelaced__block-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <p class="why-lovelaced__block-body">{{ block.settings.body }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why LOVELACE'D",
+  "class": "why-lovelaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why LOVELACE'D?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_block",
+      "name": "Value Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Value Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Value description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why LOVELACE'D",
+      "blocks": [
+        {
+          "type": "value_block",
+          "settings": {
+            "title": "It's Personal",
+            "body": "Your photo. Your info. Your tag. This isn't a generic label. It's something that's unmistakably yours."
+          }
+        },
+        {
+          "type": "value_block",
+          "settings": {
+            "title": "It's Protected",
+            "body": "Your details are stored securely as part of your order and used only for printing. We never share your data."
+          }
+        },
+        {
+          "type": "value_block",
+          "settings": {
+            "title": "It's Reviewed",
+            "body": "No auto-production. Every design is personally checked before it's printed. Quality is not optional."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

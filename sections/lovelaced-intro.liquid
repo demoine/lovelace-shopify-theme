@@ -1,0 +1,61 @@
+{{ 'section-lovelaced-intro.css' | asset_url | stylesheet_tag }}
+
+<section class="lovelaced-intro" id="lovelaced-intro-{{ section.id }}">
+  <div class="page-width">
+    <div class="lovelaced-intro__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lovelaced-intro__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="lovelaced-intro__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_text != blank -%}
+        <div class="lovelaced-intro__cta">
+          <a href="{{ section.settings.cta_link | default: '/pages/lovelaced' }}" class="btn btn--accent-secondary">
+            {{ section.settings.cta_text }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LOVELACE'D Intro",
+  "class": "lovelaced-intro-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Introducing LOVELACE'D"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Custom photo bag tags, designed by you, printed by us. Upload your photo, pick your style, and we handle the rest. Every order is personally reviewed before it's printed.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Make It Yours"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link",
+      "default": "/pages/lovelaced"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOVELACE'D Intro"
+    }
+  ]
+}
+{% endschema %}

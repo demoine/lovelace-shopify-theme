@@ -1,0 +1,31 @@
+<section class="main-login" style="padding: var(--spacing-section) 0;">
+  <div class="page-width">
+    <div style="max-width: 400px; margin: 0 auto; text-align: center;">
+      <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg);">
+        Activate Account
+      </h1>
+
+      {%- form 'activate_customer_password' -%}
+        <div style="margin-bottom: var(--spacing-sm); text-align: left;">
+          <label for="activate-password" class="form-label">{{ 'customer.register.password' | t }}</label>
+          <input type="password" name="customer[password]" id="activate-password" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-sm); text-align: left;">
+          <label for="activate-password-confirm" class="form-label">Confirm password</label>
+          <input type="password" name="customer[password_confirmation]" id="activate-password-confirm" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: var(--spacing-md);">Activate</button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Activate Account",
+  "class": "main-activate-section",
+  "settings": []
+}
+{% endschema %}

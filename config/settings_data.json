@@ -1,0 +1,36 @@
+{
+  "current": {
+    "color_primary": "#2C2C2C",
+    "color_accent": "#C9584C",
+    "color_accent_secondary": "#E8836B",
+    "color_background": "#FFFFFF",
+    "color_text": "#2C2C2C",
+    "color_text_light": "#FFFFFF",
+    "color_border": "#E5E5E5",
+    "font_heading": "assistant_n4",
+    "font_body": "assistant_n4",
+    "font_body_size": 16,
+    "brand_name": "LOVELACE",
+    "copyright_text": "© 2026 DeMoine Lovelace",
+    "cart_type": "page",
+    "sections": {},
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {
+      "color_primary": "#2C2C2C",
+      "color_accent": "#C9584C",
+      "color_accent_secondary": "#E8836B",
+      "color_background": "#FFFFFF",
+      "color_text": "#2C2C2C",
+      "color_text_light": "#FFFFFF",
+      "color_border": "#E5E5E5",
+      "font_heading": "assistant_n4",
+      "font_body": "assistant_n4",
+      "font_body_size": 16,
+      "brand_name": "LOVELACE",
+      "copyright_text": "© 2026 DeMoine Lovelace",
+      "cart_type": "page"
+    }
+  }
+}

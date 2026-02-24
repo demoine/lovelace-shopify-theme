@@ -1,0 +1,45 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "Every order is personally reviewed before it's printed."
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "show_logo_text": true,
+        "show_account": true
+      },
+      "blocks": {
+        "nav-shop": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop",
+            "link": "/collections/all"
+          }
+        },
+        "nav-lovelaced": {
+          "type": "nav_link",
+          "settings": {
+            "label": "LOVELACE'D",
+            "link": "/pages/lovelaced"
+          }
+        },
+        "nav-about": {
+          "type": "nav_link",
+          "settings": {
+            "label": "About",
+            "link": "/pages/about"
+          }
+        }
+      },
+      "block_order": ["nav-shop", "nav-lovelaced", "nav-about"]
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

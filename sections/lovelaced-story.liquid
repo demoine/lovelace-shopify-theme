@@ -1,0 +1,41 @@
+{{ 'section-story.css' | asset_url | stylesheet_tag }}
+
+<section class="story" id="lovelaced-story-{{ section.id }}">
+  <div class="page-width">
+    <div class="story__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="story__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="story__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LOVELACE'D Story",
+  "class": "lovelaced-story-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Story"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>LOVELACE'D started with a school project and a Disney vacation. What began as a simple idea between a father and daughter became something bigger. A way to turn everyday items into something personal, something protected, something that's unmistakably yours.</p><p>Every tag is custom designed with your photo on the front and your details on the back. No templates. No mass production. Each one is reviewed and printed by hand.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOVELACE'D Story"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<section class="main-404 section-padding">
+  <div class="page-width text-center">
+    <h1 style="font-size: clamp(2rem, 5vw, 4rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-sm);">
+      {{ '404.title' | t }}
+    </h1>
+    <p style="font-size: 1.125rem; opacity: 0.6; margin-bottom: var(--spacing-md);">
+      {{ '404.subtext' | t }}
+    </p>
+    <a href="{{ routes.root_url }}" class="btn btn--primary">
+      {{ '404.back_home' | t }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "class": "main-404-section",
+  "settings": []
+}
+{% endschema %}

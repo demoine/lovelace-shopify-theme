@@ -1,0 +1,121 @@
+{{ 'section-how-it-works.css' | asset_url | stylesheet_tag }}
+
+<section class="how-it-works" id="how-it-works-{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="how-it-works__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="how-it-works__grid">
+      {%- for block in section.blocks -%}
+        <div class="how-it-works__step" {{ block.shopify_attributes }}>
+          <div class="how-it-works__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'camera' -%}
+                {% render 'icon-camera', width: 28, height: 28 %}
+              {%- when 'palette' -%}
+                {% render 'icon-palette', width: 28, height: 28 %}
+              {%- when 'printer' -%}
+                {% render 'icon-printer', width: 28, height: 28 %}
+              {%- when 'shield' -%}
+                {% render 'icon-shield', width: 28, height: 28 %}
+            {%- endcase -%}
+          </div>
+          <p class="how-it-works__step-number">Step {{ forloop.index }}</p>
+          {%- if block.settings.title != blank -%}
+            <h3 class="how-it-works__step-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <p class="how-it-works__step-body">{{ block.settings.body }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "class": "how-it-works-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "camera", "label": "Camera" },
+            { "value": "palette", "label": "Palette" },
+            { "value": "printer", "label": "Printer" },
+            { "value": "shield", "label": "Shield" }
+          ],
+          "default": "camera"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Step description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon": "camera",
+            "title": "Upload Your Photo",
+            "body": "One photo. That's all you need. A family shot, your pet, your kid's favorite moment. We fit it to your tag."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "palette",
+            "title": "Pick Your Style",
+            "body": "Choose a design preset for the back of your tag. Bright, minimal, professional — whatever fits."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Add Your Details",
+            "body": "Name, phone, email, address. You choose what goes on the back. Only what you want, nothing you don't."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "printer",
+            "title": "We Review & Print",
+            "body": "Every order is personally reviewed for quality before we print. Double-sided on durable PVC. Then shipped to your door."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

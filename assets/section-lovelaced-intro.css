@@ -1,0 +1,32 @@
+.lovelaced-intro {
+  padding: var(--spacing-section) 0;
+  text-align: center;
+  background-color: #faf5f3;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lovelaced-intro__content {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.lovelaced-intro__heading {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-accent-secondary);
+}
+
+.lovelaced-intro__body {
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.lovelaced-intro__cta {
+  margin-top: var(--spacing-sm);
+}

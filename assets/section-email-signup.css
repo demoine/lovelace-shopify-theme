@@ -1,0 +1,100 @@
+.email-signup {
+  padding: var(--spacing-section) 0;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.email-signup__content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-signup__logo {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+  display: flex;
+  justify-content: center;
+}
+
+.email-signup__heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.email-signup__subline {
+  font-size: 0.9375rem;
+  opacity: 0.75;
+  margin-bottom: var(--spacing-md);
+}
+
+.email-signup__form {
+  display: flex;
+  gap: 0;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.email-signup__input {
+  flex: 1 1 auto;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  background: transparent;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.email-signup__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.email-signup__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.email-signup__submit {
+  flex: 0 0 auto;
+  padding: 0.875rem 1.5rem;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-accent);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.email-signup__submit:hover {
+  background-color: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+}
+
+.email-signup__status {
+  margin-top: var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 749px) {
+  .email-signup__form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .email-signup__input {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
+  }
+
+  .email-signup__submit {
+    border-radius: var(--border-radius);
+  }
+}

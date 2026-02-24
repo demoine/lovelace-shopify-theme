@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "show_description": true,
+        "enable_sorting": true,
+        "products_per_page": 24
+      }
+    }
+  },
+  "order": ["main-collection"]
+}

@@ -1,0 +1,69 @@
+<style>
+  .main-account { padding: var(--spacing-section) 0; }
+  .main-account__title { text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-sm); }
+  .main-account__logout { text-align: center; margin-bottom: var(--spacing-lg); }
+  .main-account__logout a { font-size: 0.875rem; color: var(--color-accent); text-decoration: underline; }
+  .main-account__section-title { font-size: 1.125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+  .order-table { width: 100%; border-collapse: collapse; margin-bottom: var(--spacing-lg); }
+  .order-table th { text-align: left; padding: 0.75rem 0.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; border-bottom: 1px solid var(--color-border); }
+  .order-table td { padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; }
+  .order-table a { color: var(--color-accent); text-decoration: underline; }
+  .account-addresses { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-md); }
+  .account-address { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: var(--spacing-md); font-size: 0.875rem; line-height: 1.6; }
+</style>
+
+<section class="main-account">
+  <div class="page-width page-width--narrow">
+    <h1 class="main-account__title">{{ 'customer.account.title' | t }}</h1>
+    <div class="main-account__logout">
+      <a href="{{ routes.account_logout_url }}">{{ 'customer.account.logout' | t }}</a>
+    </div>
+
+    <h2 class="main-account__section-title">{{ 'customer.account.orders' | t }}</h2>
+    {%- if customer.orders.size > 0 -%}
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for order in customer.orders -%}
+            <tr>
+              <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+              <td>{{ order.created_at | date: "%B %d, %Y" }}</td>
+              <td>{{ order.financial_status_label }}</td>
+              <td>{{ order.total_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    {%- else -%}
+      <p style="opacity: 0.6; margin-bottom: var(--spacing-lg);">No orders yet.</p>
+    {%- endif -%}
+
+    <h2 class="main-account__section-title">{{ 'customer.account.addresses' | t }}</h2>
+    {%- if customer.addresses.size > 0 -%}
+      <div class="account-addresses">
+        {%- for address in customer.addresses -%}
+          <div class="account-address">
+            {{ address | format_address }}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p style="opacity: 0.6;">No saved addresses.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Account",
+  "class": "main-account-section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+.story {
+  padding: var(--spacing-section) 0;
+}
+
+.story__content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story__heading {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-lg);
+}
+
+.story__body {
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  line-height: 2;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.story__body p {
+  margin-bottom: 1.5em;
+}
+
+.story__body p:last-child {
+  margin-bottom: 0;
+}

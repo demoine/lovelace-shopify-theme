@@ -1,0 +1,18 @@
+<section class="main-page section-padding">
+  <div class="page-width page-width--narrow">
+    <h1 class="main-page__title" style="text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg);">
+      {{ page.title }}
+    </h1>
+    <div class="main-page__content" style="line-height: 1.8; font-size: 0.9375rem;">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Default Page",
+  "class": "main-page-section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="hero hero--dark{% if section.settings.image != blank %} hero--with-image{% endif %}"
+  {% if section.settings.image != blank %}
+    style="background-image: url('{{ section.settings.image | image_url: width: 1920 }}')"
+  {% endif %}
+  id="hero-{{ section.id }}"
+>
+  {%- if section.settings.image != blank -%}
+    <div class="hero__overlay"></div>
+  {%- endif -%}
+
+  <div class="hero__content">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.body != blank -%}
+      <div class="hero__body">{{ section.settings.body }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="hero__cta">
+        <a
+          href="{{ section.settings.cta_link | default: '#collection-grid' }}"
+          class="btn btn--primary"
+        >
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "LOVE YOU FIRST"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>You are seen. You are valued. You are enough. Exactly as you are. Your journey is yours. Don't compare it. Honor it. This is your reminder to love what's already within you. Wear it close.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image (optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

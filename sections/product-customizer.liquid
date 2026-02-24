@@ -1,0 +1,311 @@
+{{ 'section-product-customizer.css' | asset_url | stylesheet_tag }}
+
+{%- assign product = all_products[section.settings.product] -%}
+
+<section class="product-customizer" id="product-customizer">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="product-customizer__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- comment -%} Step Navigation {%- endcomment -%}
+    <div class="customizer-steps" aria-label="Customizer progress">
+      {%- assign step_labels = 'Size,Design,Photo,Details,Review' | split: ',' -%}
+      {%- for label in step_labels -%}
+        <div class="customizer-steps__step{% if forloop.first %} is-active{% endif %}" data-step-indicator="{{ forloop.index }}">
+          <span class="customizer-steps__number">{{ forloop.index }}</span>
+          <span class="customizer-steps__label">{{ label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <form id="customizer-form" data-customizer-form>
+      {%- comment -%} ===== STEP 1: Select Size ===== {%- endcomment -%}
+      <div class="customizer-panel is-active" data-step="1">
+        <h3 class="customizer-panel__title">{{ 'customizer.step_size' | t }}</h3>
+        <div class="size-options">
+          {%- if product != blank -%}
+            {%- for variant in product.variants -%}
+              <div class="size-option">
+                <input
+                  type="radio"
+                  name="variant_id"
+                  id="size-{{ variant.id }}"
+                  value="{{ variant.id }}"
+                  class="size-option__input"
+                  data-variant-id="{{ variant.id }}"
+                  data-variant-title="{{ variant.title }}"
+                  data-variant-price="{{ variant.price | money }}"
+                  {% if forloop.first %}checked{% endif %}
+                  required
+                >
+                <label for="size-{{ variant.id }}" class="size-option__label">
+                  <span class="size-option__name">{{ variant.title }}</span>
+                  <span class="size-option__price">{{ variant.price | money }}</span>
+                </label>
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <div class="size-option">
+              <input type="radio" name="variant_id" id="size-placeholder-1" value="" class="size-option__input" checked>
+              <label for="size-placeholder-1" class="size-option__label">
+                <span class="size-option__name">2.7" x 3.9"</span>
+                <span class="size-option__price">$19.99</span>
+              </label>
+            </div>
+            <div class="size-option">
+              <input type="radio" name="variant_id" id="size-placeholder-2" value="" class="size-option__input">
+              <label for="size-placeholder-2" class="size-option__label">
+                <span class="size-option__name">1.9" x 1.9"</span>
+                <span class="size-option__price">$14.99</span>
+              </label>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="customizer-nav">
+          <span></span>
+          <button type="button" class="btn btn--accent-secondary customizer-nav__next" data-next-step>
+            {{ 'customizer.next' | t }}
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} ===== STEP 2: Pick a Design ===== {%- endcomment -%}
+      <div class="customizer-panel" data-step="2">
+        <h3 class="customizer-panel__title">{{ 'customizer.step_design' | t }}</h3>
+        <div class="design-options">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'design_preset' -%}
+              <div class="design-option" {{ block.shopify_attributes }}>
+                <input
+                  type="radio"
+                  name="design_preset"
+                  id="design-{{ block.id }}"
+                  value="{{ block.settings.name }}"
+                  class="design-option__input"
+                  {% if forloop.first %}checked{% endif %}
+                >
+                <label for="design-{{ block.id }}" class="design-option__label">
+                  <span class="design-option__swatch design-option__swatch--{{ block.settings.swatch }}"></span>
+                  <span class="design-option__name">{{ block.settings.name }}</span>
+                </label>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="customizer-nav">
+          <button type="button" class="customizer-nav__back" data-prev-step>
+            {{ 'customizer.back' | t }}
+          </button>
+          <button type="button" class="btn btn--accent-secondary customizer-nav__next" data-next-step>
+            {{ 'customizer.next' | t }}
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} ===== STEP 3: Add Your Photo ===== {%- endcomment -%}
+      <div class="customizer-panel" data-step="3">
+        <h3 class="customizer-panel__title">{{ 'customizer.step_photo' | t }}</h3>
+        <div class="photo-upload">
+          <div class="photo-upload__dropzone" data-dropzone>
+            <input
+              type="file"
+              name="properties[Photo]"
+              accept="image/jpeg,image/png,image/webp"
+              class="photo-upload__input"
+              data-photo-input
+              required
+            >
+            <div class="photo-upload__prompt">
+              <div class="photo-upload__prompt-icon">
+                {% render 'icon-camera', width: 48, height: 48 %}
+              </div>
+              <p class="photo-upload__prompt-text">{{ 'customizer.upload_prompt' | t }}</p>
+            </div>
+            <div class="photo-upload__preview">
+              <img src="" alt="Photo preview" class="photo-upload__preview-img" data-preview-img width="300" height="300">
+              <p class="photo-upload__preview-name" data-preview-name></p>
+            </div>
+          </div>
+          <p class="photo-upload__warning" data-photo-warning>{{ 'customizer.upload_warning' | t }}</p>
+        </div>
+
+        <div class="customizer-nav">
+          <button type="button" class="customizer-nav__back" data-prev-step>
+            {{ 'customizer.back' | t }}
+          </button>
+          <button type="button" class="btn btn--accent-secondary customizer-nav__next" data-next-step>
+            {{ 'customizer.next' | t }}
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} ===== STEP 4: Add Your Details ===== {%- endcomment -%}
+      <div class="customizer-panel" data-step="4">
+        <h3 class="customizer-panel__title">{{ 'customizer.step_details' | t }}</h3>
+        <div class="details-fields">
+          {%- assign detail_fields = 'Name,Phone,Email,Address' | split: ',' -%}
+          {%- for field in detail_fields -%}
+            <div class="details-field" data-detail-field="{{ field }}">
+              <button type="button" class="details-field__toggle" aria-expanded="false" data-detail-toggle>
+                <span>{{ field }}</span>
+                <span class="details-field__switch" aria-hidden="true"></span>
+              </button>
+              <div class="details-field__input-wrapper">
+                <input
+                  type="{% if field == 'Email' %}email{% elsif field == 'Phone' %}tel{% else %}text{% endif %}"
+                  name="properties[{{ field }}]"
+                  class="details-field__input"
+                  placeholder="Enter your {{ field | downcase }}"
+                  data-detail-input="{{ field }}"
+                >
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="customizer-nav">
+          <button type="button" class="customizer-nav__back" data-prev-step>
+            {{ 'customizer.back' | t }}
+          </button>
+          <button type="button" class="btn btn--accent-secondary customizer-nav__next" data-next-step>
+            {{ 'customizer.next' | t }}
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} ===== STEP 5: Review & Add to Cart ===== {%- endcomment -%}
+      <div class="customizer-panel" data-step="5">
+        <h3 class="customizer-panel__title">{{ 'customizer.step_review' | t }}</h3>
+        <div class="review">
+          <div class="review__previews">
+            <div class="review__preview-card">
+              <span class="review__preview-label">{{ 'customizer.front' | t }}</span>
+              <div class="review__preview-content">
+                <img src="" alt="Tag front preview" class="review__preview-img" data-review-front-img width="250" height="250">
+              </div>
+            </div>
+            <div class="review__preview-card">
+              <span class="review__preview-label">{{ 'customizer.back_side' | t }}</span>
+              <div class="review__preview-content">
+                <div class="review__preview-back" data-review-back-content>
+                  <p class="review__preview-design" data-review-design></p>
+                  <div data-review-details></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review__checkboxes">
+            <label class="review__checkbox">
+              <input type="checkbox" required data-terms-checkbox>
+              {{ 'customizer.terms_label' | t }}
+            </label>
+            <label class="review__checkbox">
+              <input type="checkbox" required data-consent-checkbox>
+              {{ 'customizer.consent_label' | t }}
+            </label>
+          </div>
+
+          <div class="customizer-nav">
+            <button type="button" class="customizer-nav__back" data-prev-step>
+              {{ 'customizer.back' | t }}
+            </button>
+            <button type="submit" class="btn btn--accent customizer-nav__add-to-cart" data-add-to-cart-btn disabled>
+              {{ 'customizer.add_to_cart' | t }}
+            </button>
+          </div>
+
+          <p class="review__privacy-note">{{ 'customizer.privacy_note' | t }}</p>
+        </div>
+      </div>
+
+      {%- comment -%} Hidden fields for line item properties {%- endcomment -%}
+      <input type="hidden" name="properties[Design Preset]" value="" data-hidden-design>
+      <input type="hidden" name="properties[Size]" value="" data-hidden-size>
+    </form>
+  </div>
+</section>
+
+<script src="{{ 'product-customizer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Product Customizer",
+  "class": "product-customizer-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Design Your Tag"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Bag tag product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "design_preset",
+      "name": "Design Preset",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Preset name",
+          "default": "Bright & Playful"
+        },
+        {
+          "type": "select",
+          "id": "swatch",
+          "label": "Swatch style",
+          "options": [
+            { "value": "bright", "label": "Bright & Playful" },
+            { "value": "pastels", "label": "Soft Pastels" },
+            { "value": "adventure", "label": "Adventure" },
+            { "value": "tropical", "label": "Tropical" },
+            { "value": "corporate", "label": "Corporate" },
+            { "value": "minimal", "label": "Modern Minimal" }
+          ],
+          "default": "bright"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Customizer",
+      "blocks": [
+        {
+          "type": "design_preset",
+          "settings": { "name": "Bright & Playful", "swatch": "bright" }
+        },
+        {
+          "type": "design_preset",
+          "settings": { "name": "Soft Pastels", "swatch": "pastels" }
+        },
+        {
+          "type": "design_preset",
+          "settings": { "name": "Adventure", "swatch": "adventure" }
+        },
+        {
+          "type": "design_preset",
+          "settings": { "name": "Tropical", "swatch": "tropical" }
+        },
+        {
+          "type": "design_preset",
+          "settings": { "name": "Corporate", "swatch": "corporate" }
+        },
+        {
+          "type": "design_preset",
+          "settings": { "name": "Modern Minimal", "swatch": "minimal" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+<section class="main-login" style="padding: var(--spacing-section) 0;">
+  <div class="page-width">
+    <div style="max-width: 400px; margin: 0 auto;">
+      <h1 style="text-align: center; font-size: clamp(1.5rem, 3.5vw, 2.5rem); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--spacing-lg);">
+        {{ 'customer.register.title' | t }}
+      </h1>
+
+      {%- form 'create_customer' -%}
+        {%- if form.errors -%}
+          <div style="color: var(--color-accent); margin-bottom: var(--spacing-sm); text-align: center;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div style="margin-bottom: var(--spacing-sm);">
+          <label for="reg-first-name" class="form-label">{{ 'customer.register.first_name' | t }}</label>
+          <input type="text" name="customer[first_name]" id="reg-first-name" class="form-input" autocomplete="given-name">
+        </div>
+
+        <div style="margin-bottom: var(--spacing-sm);">
+          <label for="reg-last-name" class="form-label">{{ 'customer.register.last_name' | t }}</label>
+          <input type="text" name="customer[last_name]" id="reg-last-name" class="form-input" autocomplete="family-name">
+        </div>
+
+        <div style="margin-bottom: var(--spacing-sm);">
+          <label for="reg-email" class="form-label">{{ 'customer.register.email' | t }}</label>
+          <input type="email" name="customer[email]" id="reg-email" class="form-input" autocomplete="email" required>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-sm);">
+          <label for="reg-password" class="form-label">{{ 'customer.register.password' | t }}</label>
+          <input type="password" name="customer[password]" id="reg-password" class="form-input" autocomplete="new-password" required>
+        </div>
+
+        <div style="margin-top: var(--spacing-md); text-align: center;">
+          <button type="submit" class="btn btn--primary" style="width: 100%;">{{ 'customer.register.submit' | t }}</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Register",
+  "class": "main-register-section",
+  "settings": []
+}
+{% endschema %}

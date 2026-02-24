@@ -1,0 +1,113 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "menu": "Menu",
+    "close": "Close",
+    "cart": "Cart",
+    "account": "Account",
+    "search": "Search",
+    "loading": "Loading…"
+  },
+  "accessibility": {
+    "open_menu": "Open navigation menu",
+    "close_menu": "Close navigation menu",
+    "open_cart": "Open cart",
+    "social_instagram": "Follow on Instagram",
+    "social_facebook": "Follow on Facebook",
+    "social_tiktok": "Follow on TikTok",
+    "skip_to_content": "Skip to content",
+    "announcement_bar": "Announcement",
+    "next_slide": "Next slide",
+    "previous_slide": "Previous slide"
+  },
+  "newsletter": {
+    "email_placeholder": "Your email address",
+    "submit": "Subscribe",
+    "success": "Thanks for subscribing!",
+    "error": "Something went wrong. Please try again."
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "update": "Update"
+  },
+  "product": {
+    "add_to_cart": "Add to Cart",
+    "sold_out": "Sold Out",
+    "unavailable": "Unavailable",
+    "price": "Price",
+    "quantity": "Quantity",
+    "description": "Description"
+  },
+  "collection": {
+    "title": "Collection",
+    "products_count": "{{ count }} products",
+    "sort_by": "Sort by",
+    "no_products": "No products found in this collection."
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "orders": "Order History",
+      "addresses": "Addresses",
+      "logout": "Log Out"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgot_password": "Forgot your password?",
+      "create_account": "Create account"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    },
+    "reset_password": {
+      "title": "Reset Password",
+      "email": "Email",
+      "submit": "Submit"
+    },
+    "order": {
+      "title": "Order {{ name }}"
+    }
+  },
+  "404": {
+    "title": "Page not found",
+    "subtext": "The page you're looking for doesn't exist.",
+    "back_home": "Back to homepage"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search our store…",
+    "no_results": "No results found for \"{{ terms }}\".",
+    "submit": "Search"
+  },
+  "customizer": {
+    "step_size": "Select Your Size",
+    "step_design": "Pick a Design",
+    "step_photo": "Add Your Photo",
+    "step_details": "Add Your Details",
+    "step_review": "Review & Add to Cart",
+    "upload_prompt": "Drag & drop your photo here, or click to browse",
+    "upload_warning": "For the best print, use a clear, high-resolution photo.",
+    "terms_label": "I agree to the terms of service",
+    "consent_label": "I consent to my photo being used to print this tag",
+    "privacy_note": "Your details are stored securely as part of your order and used only for printing your tag. We never share your data.",
+    "add_to_cart": "Add to Cart",
+    "next": "Next",
+    "back": "Back",
+    "front": "Front",
+    "back_side": "Back"
+  }
+}
