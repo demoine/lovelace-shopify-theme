@@ -2,26 +2,26 @@
    LOVELACE Theme — Base Styles  |  Modern · Bold · Minimal
    ========================================================================== */
 
-/* ---------- CSS Custom Properties ---------- */
+/* ---------- CSS Custom Properties (defaults — overridden by theme.liquid inline style) ---------- */
 :root {
-  --color-primary: {{ settings.color_primary }};
-  --color-accent: {{ settings.color_accent }};
-  --color-accent-secondary: {{ settings.color_accent_secondary }};
-  --color-background: {{ settings.color_background }};
-  --color-text: {{ settings.color_text }};
-  --color-text-light: {{ settings.color_text_light }};
-  --color-border: {{ settings.color_border }};
+  --color-primary: #2C2C2C;
+  --color-accent: #C9584C;
+  --color-accent-secondary: #E8836B;
+  --color-background: #FFFFFF;
+  --color-text: #2C2C2C;
+  --color-text-light: #FFFFFF;
+  --color-border: #E5E5E5;
 
   --color-surface: #F6F4F2;
   --color-surface-dark: #1A1A1A;
 
-  --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
-  --font-heading-weight: {{ settings.font_heading.weight }};
-  --font-heading-style: {{ settings.font_heading.style }};
-  --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
-  --font-body-weight: {{ settings.font_body.weight }};
-  --font-body-style: {{ settings.font_body.style }};
-  --font-body-size: {{ settings.font_body_size }}px;
+  --font-heading: Assistant, sans-serif;
+  --font-heading-weight: 400;
+  --font-heading-style: normal;
+  --font-body: Assistant, sans-serif;
+  --font-body-weight: 400;
+  --font-body-style: normal;
+  --font-body-size: 16px;
 
   --page-width: 1200px;
   --page-width-narrow: 720px;

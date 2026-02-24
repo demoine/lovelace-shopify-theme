@@ -31,9 +31,30 @@
   <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
 
   {{ settings.font_heading | font_face: font_display: 'swap' }}
-  {%- unless settings.font_body == settings.font_heading -%}
+  {%- unless settings.font_body.family == settings.font_heading.family and settings.font_body.style == settings.font_heading.style and settings.font_body.weight == settings.font_heading.weight -%}
     {{ settings.font_body | font_face: font_display: 'swap' }}
   {%- endunless -%}
+
+  {% comment %} Liquid-powered CSS custom properties — overrides hardcoded defaults in base.css {% endcomment %}
+  <style>
+    :root {
+      --color-primary: {{ settings.color_primary }};
+      --color-accent: {{ settings.color_accent }};
+      --color-accent-secondary: {{ settings.color_accent_secondary }};
+      --color-background: {{ settings.color_background }};
+      --color-text: {{ settings.color_text }};
+      --color-text-light: {{ settings.color_text_light }};
+      --color-border: {{ settings.color_border }};
+
+      --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+      --font-heading-weight: {{ settings.font_heading.weight }};
+      --font-heading-style: {{ settings.font_heading.style }};
+      --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      --font-body-weight: {{ settings.font_body.weight }};
+      --font-body-style: {{ settings.font_body.style }};
+      --font-body-size: {{ settings.font_body_size }}px;
+    }
+  </style>
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
 
