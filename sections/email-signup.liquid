@@ -17,7 +17,7 @@
         <p class="email-signup__subline">{{ section.settings.subline }}</p>
       {%- endif -%}
 
-      {%- form 'customer', id: 'newsletter-form', data-newsletter-form: '' -%}
+      {%- form 'customer', id: 'newsletter-form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <div class="email-signup__form">
           <input
