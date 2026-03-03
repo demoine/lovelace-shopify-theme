@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "product-customizer": {
+      "type": "product-customizer",
+      "settings": {
+        "heading": "Design Your Luggage Tag",
+        "product": ""
+      },
+      "blocks": {
+        "bright": {
+          "type": "design_preset",
+          "settings": { "name": "Bright & Playful", "swatch": "bright" }
+        },
+        "pastels": {
+          "type": "design_preset",
+          "settings": { "name": "Soft Pastels", "swatch": "pastels" }
+        },
+        "adventure": {
+          "type": "design_preset",
+          "settings": { "name": "Adventure", "swatch": "adventure" }
+        },
+        "tropical": {
+          "type": "design_preset",
+          "settings": { "name": "Tropical", "swatch": "tropical" }
+        },
+        "corporate": {
+          "type": "design_preset",
+          "settings": { "name": "Corporate", "swatch": "corporate" }
+        },
+        "minimal": {
+          "type": "design_preset",
+          "settings": { "name": "Modern Minimal", "swatch": "minimal" }
+        }
+      },
+      "block_order": ["bright", "pastels", "adventure", "tropical", "corporate", "minimal"]
+    }
+  },
+  "order": ["main-product", "product-customizer"]
+}

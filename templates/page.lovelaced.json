@@ -4,7 +4,7 @@
       "type": "lovelaced-hero",
       "settings": {
         "heading": "Make it yours.",
-        "subheadline": "<p>Custom photo bag tags, designed by you, printed by us. Double-sided. Durable. Personal.<\/p>",
+        "subheadline": "<p>Custom photo luggage tags, designed by you, printed by us. Double-sided. Durable. Personal.<\/p>",
         "cta_text": "Start Designing",
         "cta_link": "#product-customizer"
       }
@@ -13,7 +13,7 @@
       "type": "lovelaced-story",
       "settings": {
         "heading": "The Story",
-        "body": "<p>LOVELACE\u2019D started with a school project and a Disney vacation. What began as a simple idea between a father and daughter became something bigger. A way to turn everyday items into something personal, something protected, something that\u2019s unmistakably yours.<\/p><p>Every tag is custom designed with your photo on the front and your details on the back. No templates. No mass production. Each one is reviewed and printed by hand.<\/p>"
+        "body": "<p>LOVELACE\u2019D started with a school project and a Disney vacation. What began as a simple idea between a father and daughter became something bigger. A way to turn everyday items into something personal, something protected, something that\u2019s unmistakably yours.<\/p><p>Every luggage tag is custom designed with your photo on the front and your details on the back. No templates. No mass production. Each one is reviewed and printed by hand.<\/p>"
       }
     },
     "how-it-works": {
@@ -27,7 +27,7 @@
           "settings": {
             "icon": "camera",
             "title": "Upload Your Photo",
-            "body": "One photo. That\u2019s all you need. A family shot, your pet, your kid\u2019s favorite moment. We fit it to your tag."
+            "body": "One photo. That\u2019s all you need. A family shot, your pet, your kid\u2019s favorite moment. We fit it to your luggage tag."
           }
         },
         "step-2": {
@@ -35,7 +35,7 @@
           "settings": {
             "icon": "palette",
             "title": "Pick Your Style",
-            "body": "Choose a design preset for the back of your tag. Bright, minimal, professional \u2014 whatever fits."
+            "body": "Choose a design preset for the back of your luggage tag. Bright, minimal, professional \u2014 whatever fits."
           }
         },
         "step-3": {
@@ -67,7 +67,7 @@
           "type": "value_block",
           "settings": {
             "title": "It\u2019s Personal",
-            "body": "Your photo. Your info. Your tag. This isn\u2019t a generic label. It\u2019s something that\u2019s unmistakably yours."
+            "body": "Your photo. Your info. Your luggage tag. This isn\u2019t a generic label. It\u2019s something that\u2019s unmistakably yours."
           }
         },
         "protected": {
@@ -90,7 +90,7 @@
     "product-customizer": {
       "type": "product-customizer",
       "settings": {
-        "heading": "Design Your Tag",
+        "heading": "Design Your Luggage Tag",
         "product": ""
       },
       "blocks": {
